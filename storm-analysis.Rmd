@@ -1,0 +1,34 @@
+---
+title: "NOAA Analysis"
+author: "Chau Pham"
+date: "4/7/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+#Analysis of the NOAA Storm Database
+##Synopsis
+... Placeholder for now
+
+##Data processing
+The NOAA dataset can be downloaded [here][1]. More information is available on the [documentation][2] of the database and the [FAQ][3] page.
+[1]: https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2
+[2]: https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf
+[3]: https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf
+
+We first download the bz2 file containing the dataset to our local computer and load into R. **Warning: the dataset is around <span style="color: red;">475 MB<\span> after unzipping.**
+```{r processing, cache = TRUE}
+download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2", "noaa.bz2") ##optional if the dataset has already been downloaded
+library(readr)
+noaa <- read_csv("noaa.bz2")
+```
+
+Having loaded the dataset, let's have a first look at the dataset.
+```{r}
+summary(noaa)
+dim(noaa)
+head(noaa)
+```
